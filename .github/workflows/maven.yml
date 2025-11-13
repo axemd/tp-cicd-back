@@ -29,3 +29,8 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Build Docker Image
+      run: docker build -t ${{env.imageName}} .
+
+env:
+  imageName: axemdch/tpcicd:${{github.ref_name}}
